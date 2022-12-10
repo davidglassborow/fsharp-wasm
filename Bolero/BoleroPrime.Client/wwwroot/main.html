@@ -1,0 +1,120 @@
+<div class="columns">
+  <aside class="column sidebar is-narrow">
+    <section class="section">
+      <nav class="menu">
+        <ul class="menu-list">
+          ${Menu}
+          <template id="MenuItem">
+            <li><a class="${Active}" href="${Url}">${Text}</a></li>
+          </template>
+        </ul>
+      </nav>
+    </section>
+  </aside>
+  <div class="column">
+    <section class="section">
+      ${Body}
+
+      <div id="notification-area">
+        <div>${Error}</div>
+      </div>
+
+      <template id="Home">
+        <div class="content">
+          <h1 class="title">Welcome to Bolero!</h1>
+          <p>This application demonstrates Bolero's major features.</p>
+          <ul>
+            <li>
+              The entire application is driven by
+              <a target="_blank" href="https://fsbolero.github.io/docs/Elmish">Elmish</a>.
+            </li>
+            <li>
+              The menu on the left switches pages based on
+              <a target="_blank" href="https://fsbolero.github.io/docs/Routing">routes</a>.
+            </li>
+            <li>
+              The <a href="/counter">Counter</a> page demonstrates event handlers and data binding in
+              <a target="_blank" href="https://fsbolero.github.io/docs/Templating">HTML templates</a>.
+            </li>
+            <li>
+              The <a href="/data">Download data</a> page demonstrates the use of
+              <a target="_blank" href="https://fsbolero.github.io/docs/Remoting">remote functions</a>.
+            </li>
+          </ul>
+          <p>Enjoy writing awesome apps!</p>
+        </div>
+      </template>
+
+      <template id="Counter">
+        <h1 class="title">A simple counter</h1>
+        <p>
+          <button onclick="${Decrement}" class="button">-</button>
+          <input type="number" id="counter" class="input" bind="${Value}">
+          <button onclick="${Increment}" class="button">+</button>
+        </p>
+        <p>
+          The counter's value is: ${Value}
+        </p>
+      </template>
+
+      <template id="Data">
+        <h1 class="title">
+          Download data
+          <button class="button" onclick="${Reload}">Reload</button>
+        </h1>
+        <p>
+          Signed in as ${Username}.
+          <button class="button" onclick="${SignOut}">Sign out</button>
+        </p>
+        <table class="table is-fullwidth">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Author</th>
+              <th>Published</th>
+              <th>ISBN</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${Rows}
+            <template id="EmptyData">
+              <tr><td colspan="4">Downloading book list...</td></tr>
+            </template>
+          </tbody>
+        </table>
+      </template>
+
+      <template id="SignIn">
+        <h1 class="title">Sign in</h1>
+        <form onsubmit="${SignIn}">
+          <div class="field">
+            <label class="label">Username</label>
+            <div class="control">
+              <input class="input" bind="${Username}" />
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Password</label>
+            <div class="control">
+              <input class="input" type="password" bind="${Password}" />
+            </div>
+          </div>
+          <div class="field">
+            <div class="control">
+              <input type="submit" value="Sign in" />
+            </div>
+          </div>
+          ${ErrorNotification}
+        </form>
+      </template>
+
+      <template id="ErrorNotification">
+        <div class="notification is-warning">
+          <button class="delete ${HideClass}" onclick="${Hide}"></button>
+          ${Text}
+        </div>
+      </template>
+
+    </section>
+  </div>
+</div>

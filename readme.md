@@ -1,4 +1,7 @@
 ﻿
+
+https://learn.microsoft.com/en-us/aspnet/core/blazor/host-and-deploy/webassembly?view=aspnetcore-7.0  AOT ????
+
 ## Blazor
 
 - cd Blazor
@@ -11,6 +14,12 @@
 - 10M, 35.2 in Chrome 108
 
 
+## Bolero
+
+https://fsbolero.io
+
+- dotnet run -p src/MyApp.Server
+
 ## Console
 
 - cd Console
@@ -22,6 +31,8 @@
 - 10M, 1.93 seconds
 
 ## Fable
+
+- Fable.io
 
 - cd Fable
 - npm install

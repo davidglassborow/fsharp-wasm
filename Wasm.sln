@@ -16,6 +16,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		readme.md = readme.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bolero", "Bolero", "{78DAF1E7-4D83-47CE-A8D2-61723AED4853}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "BoleroPrime.Client", "Bolero\BoleroPrime.Client\BoleroPrime.Client.fsproj", "{C7569116-FA91-41D6-AA22-AC7D54D90321}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "BoleroPrime.Server", "Bolero\BoleroPrime.Server\BoleroPrime.Server.fsproj", "{3FD61436-1BC0-4762-8F95-A3E3CE185C40}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,11 +44,23 @@ Global
 		{EA7FDB2A-4E2A-4CF4-94DA-B9012715B2A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA7FDB2A-4E2A-4CF4-94DA-B9012715B2A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA7FDB2A-4E2A-4CF4-94DA-B9012715B2A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7569116-FA91-41D6-AA22-AC7D54D90321}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7569116-FA91-41D6-AA22-AC7D54D90321}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7569116-FA91-41D6-AA22-AC7D54D90321}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7569116-FA91-41D6-AA22-AC7D54D90321}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FD61436-1BC0-4762-8F95-A3E3CE185C40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FD61436-1BC0-4762-8F95-A3E3CE185C40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FD61436-1BC0-4762-8F95-A3E3CE185C40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FD61436-1BC0-4762-8F95-A3E3CE185C40}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0264D51F-F18E-4CA2-829C-5F73408CFC01}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C7569116-FA91-41D6-AA22-AC7D54D90321} = {78DAF1E7-4D83-47CE-A8D2-61723AED4853}
+		{3FD61436-1BC0-4762-8F95-A3E3CE185C40} = {78DAF1E7-4D83-47CE-A8D2-61723AED4853}
 	EndGlobalSection
 EndGlobal

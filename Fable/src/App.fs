@@ -10,5 +10,5 @@ let myButton = document.querySelector(".my-button") :?> Browser.Types.HTMLButton
 
 // Register our listener
 myButton.onclick <- fun _ ->
-    let answer = SharedProblem.Prime.run
+    let answer = SharedProblem.Prime.run()
     myButton.innerText <- answer
