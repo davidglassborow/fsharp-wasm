@@ -1,6 +1,4 @@
-﻿
-
-https://learn.microsoft.com/en-us/aspnet/core/blazor/host-and-deploy/webassembly?view=aspnetcore-7.0  AOT ????
+﻿https://learn.microsoft.com/en-us/aspnet/core/blazor/host-and-deploy/webassembly?view=aspnetcore-7.0  AOT ????
 
 ## Blazor
 
@@ -13,14 +11,18 @@ https://learn.microsoft.com/en-us/aspnet/core/blazor/host-and-deploy/webassembly
 - 2.5M, 8.10 in Chrome 108
 - 10M, 35.2 in Chrome 108
 
-
 ## Bolero
 
-https://fsbolero.io
+https://fsbolero.io, NET6
 
 - dotnet run -p src/MyApp.Server
 
+- 2.5M, 3.48 in Safari 16.1
+- 2.5M, 9.20 in Chrome 108
+
 ## Console
+
+net7
 
 - cd Console
 - dotnet build --property:Configuration=Release
@@ -44,7 +46,10 @@ https://fsbolero.io
 
 ## Take aways for my tests
 
-- normal caveats apply
+- caveats
+  - bolero net6
+  - other normal caveats apply
+
 
 - Chrome 108 runs javascript x3 faster than Safari 16.1 on my mac
 - Safari runs wasm x2.5 faster than Chrome on my mac

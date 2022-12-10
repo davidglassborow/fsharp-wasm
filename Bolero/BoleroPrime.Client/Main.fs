@@ -11,14 +11,12 @@ open Bolero.Templating.Client
 /// Routing endpoints definition.
 type Page =
     | [<EndPoint "/">] Home
-    | [<EndPoint "/counter">] Counter
     | [<EndPoint "/problem">] Problem
 
 /// The Elmish application's model.
 type Model =
     {
         page: Page
-        counter: int
         answer: string
         error: string option
     }
@@ -27,7 +25,6 @@ type Model =
 let initModel =
     {
         page = Home
-        counter = 0
         error = None
         answer = "Not calculated yet"
     }
@@ -35,10 +32,7 @@ let initModel =
 /// The Elmish application's update messages.
 type Message =
     | SetPage of Page
-    | Increment
-    | Decrement
     | SolveProblem
-    | SetCounter of int
     | Error of exn
     | ClearError
 
@@ -49,13 +43,6 @@ let update message model =
     match message with
     | SetPage page ->
         { model with page = page }, Cmd.none
-
-    | Increment ->
-        { model with counter = model.counter + 1 }, Cmd.none
-    | Decrement ->
-        { model with counter = model.counter - 1 }, Cmd.none
-    | SetCounter value ->
-        { model with counter = value }, Cmd.none
 
     | SolveProblem ->
         { model with answer = solveProblem() }, Cmd.none
@@ -73,12 +60,6 @@ type Main = Template<"wwwroot/main.html">
 let homePage model dispatch =
     Main.Home().Elt()
 
-let counterPage model dispatch =
-    Main.Counter()
-        .Decrement(fun _ -> dispatch Decrement)
-        .Increment(fun _ -> dispatch Increment)
-        .Value(model.counter, fun v -> dispatch (SetCounter v))
-        .Elt()
 let problemPage model dispatch =
     Main.Problem()
         .SolveProblem(fun _ -> dispatch SolveProblem)
@@ -96,13 +77,11 @@ let view model dispatch =
     Main()
         .Menu(concat {
             menuItem model Home "Home"
-            menuItem model Counter "Counter"
             menuItem model Problem "Problem"
         })
         .Body(
             cond model.page <| function
             | Home -> homePage model dispatch
-            | Counter -> counterPage model dispatch
             | Problem -> problemPage model dispatch
         )
         .Error(
