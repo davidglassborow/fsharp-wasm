@@ -29,3 +29,12 @@
 
 - Safari 16.1, 2.5M, 1.13 seconds.  10M, 4.58s
 - Chrome 108, 2.5M, 0.33 seconds. 10M, 1.32s
+
+
+## Take aways for my tests
+
+- normal caveats apply
+
+- Chrome 108 runs javascript x3 faster than Safari 16.1 on my mac
+- Safari runs wasm x2.5 faster than Chrome on my mac
+- Fable is approximately as fast native F# code which is very surprising, larger tests might help dotnet via the JIT

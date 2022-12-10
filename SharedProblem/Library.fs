@@ -39,3 +39,7 @@ module Prime =
     let calculateHugePrime nth =
         let ans, tim = time <| fun () -> calculatePrime nth
         $"Calculated {nth} prime in {tim} = {ans}"
+
+    let run () =
+        calculateHugePrime 2_500_000
+        //calculateHugePrime 10_000_000
