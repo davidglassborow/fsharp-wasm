@@ -17,7 +17,7 @@ https://fsbolero.io, NET6
 
 - dotnet run -p src/MyApp.Server
 
-- 2.5M, 3.48 in Safari 16.1
+- 2.5M, 3.33 in Safari 16.1
 - 2.5M, 9.20 in Chrome 108
 
 ## Console
@@ -31,6 +31,13 @@ net7
 
 - 2.5M, 0.47 seconds.
 - 10M, 1.93 seconds
+- 100M, 21.72
+- 100m 22.212897 
+
+net6
+
+- 10m, 1.96 seconds
+- 100M, 21.72
 
 ## Fable
 
