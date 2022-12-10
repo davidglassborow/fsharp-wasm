@@ -12,13 +12,14 @@ open Bolero.Templating.Client
 type Page =
     | [<EndPoint "/">] Home
     | [<EndPoint "/counter">] Counter
-    | [<EndPoint "/data">] Data
+    | [<EndPoint "/problem">] Problem
 
 /// The Elmish application's model.
 type Model =
     {
         page: Page
         counter: int
+        answer: string
         error: string option
     }
 
@@ -28,6 +29,7 @@ let initModel =
         page = Home
         counter = 0
         error = None
+        answer = "Not calculated yet"
     }
 
 /// The Elmish application's update messages.
@@ -35,9 +37,13 @@ type Message =
     | SetPage of Page
     | Increment
     | Decrement
+    | SolveProblem
     | SetCounter of int
     | Error of exn
     | ClearError
+
+let solveProblem () =
+    SharedProblem.Prime.run()
 
 let update message model =
     match message with
@@ -50,6 +56,9 @@ let update message model =
         { model with counter = model.counter - 1 }, Cmd.none
     | SetCounter value ->
         { model with counter = value }, Cmd.none
+
+    | SolveProblem ->
+        { model with answer = solveProblem() }, Cmd.none
 
     | Error exn ->
         { model with error = Some exn.Message }, Cmd.none
@@ -70,6 +79,11 @@ let counterPage model dispatch =
         .Increment(fun _ -> dispatch Increment)
         .Value(model.counter, fun v -> dispatch (SetCounter v))
         .Elt()
+let problemPage model dispatch =
+    Main.Problem()
+        .SolveProblem(fun _ -> dispatch SolveProblem)
+        .Answer(model.answer)
+        .Elt()
 
 let menuItem (model: Model) (page: Page) (text: string) =
     Main.MenuItem()
@@ -83,11 +97,13 @@ let view model dispatch =
         .Menu(concat {
             menuItem model Home "Home"
             menuItem model Counter "Counter"
+            menuItem model Problem "Problem"
         })
         .Body(
             cond model.page <| function
             | Home -> homePage model dispatch
             | Counter -> counterPage model dispatch
+            | Problem -> problemPage model dispatch
         )
         .Error(
             cond model.error <| function

@@ -36,10 +36,10 @@ module Prime =
         let stop = System.DateTime.Now - start
         answer,stop.TotalSeconds
 
-    let calculateHugePrime nth =
+    let private calculateHugePrime nth =
         let ans, tim = time <| fun () -> calculatePrime nth
         $"Calculated {nth} prime in {tim} = {ans}"
 
     let run () =
-        calculateHugePrime 2_500_000
+        calculateHugePrime 10000 // 2_500_000
         //calculateHugePrime 10_000_000

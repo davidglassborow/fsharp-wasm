@@ -29,16 +29,7 @@
               <a target="_blank" href="https://fsbolero.github.io/docs/Elmish">Elmish</a>.
             </li>
             <li>
-              The menu on the left switches pages based on
-              <a target="_blank" href="https://fsbolero.github.io/docs/Routing">routes</a>.
-            </li>
-            <li>
-              The <a href="/counter">Counter</a> page demonstrates event handlers and data binding in
-              <a target="_blank" href="https://fsbolero.github.io/docs/Templating">HTML templates</a>.
-            </li>
-            <li>
-              The <a href="/data">Download data</a> page demonstrates the use of
-              <a target="_blank" href="https://fsbolero.github.io/docs/Remoting">remote functions</a>.
+              The <a href="/problem">Problem</a> run primes problem
             </li>
           </ul>
           <p>Enjoy writing awesome apps!</p>
@@ -57,55 +48,14 @@
         </p>
       </template>
 
-      <template id="Data">
-        <h1 class="title">
-          Download data
-          <button class="button" onclick="${Reload}">Reload</button>
-        </h1>
+      <template id="Problem">
+        <h1 class="title">Solve problem</h1>
         <p>
-          Signed in as ${Username}.
-          <button class="button" onclick="${SignOut}">Sign out</button>
+          <button onclick="${SolveProblem}" class="button">Solve Problem</button>
         </p>
-        <table class="table is-fullwidth">
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Author</th>
-              <th>Published</th>
-              <th>ISBN</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${Rows}
-            <template id="EmptyData">
-              <tr><td colspan="4">Downloading book list...</td></tr>
-            </template>
-          </tbody>
-        </table>
-      </template>
-
-      <template id="SignIn">
-        <h1 class="title">Sign in</h1>
-        <form onsubmit="${SignIn}">
-          <div class="field">
-            <label class="label">Username</label>
-            <div class="control">
-              <input class="input" bind="${Username}" />
-            </div>
-          </div>
-          <div class="field">
-            <label class="label">Password</label>
-            <div class="control">
-              <input class="input" type="password" bind="${Password}" />
-            </div>
-          </div>
-          <div class="field">
-            <div class="control">
-              <input type="submit" value="Sign in" />
-            </div>
-          </div>
-          ${ErrorNotification}
-        </form>
+        <p>
+          The answer is ${Answer}
+        </p>
       </template>
 
       <template id="ErrorNotification">
