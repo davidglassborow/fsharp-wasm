@@ -23,7 +23,6 @@ type Startup() =
             .AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie()
                 .Services
-            .AddRemoting<BookService>()
             .AddBoleroHost()
 #if DEBUG
             .AddHotReload(templateDir = __SOURCE_DIRECTORY__ + "/../BoleroPrime.Client")
