@@ -1,0 +1,19 @@
+﻿@page "/problem"
+
+<PageTitle>Problem</PageTitle>
+
+<h1>Problem</h1>
+
+<p role="status">@answer</p>
+
+<button class="btn btn-primary" @onclick="Calculate">Calculate</button>
+
+@code {
+    private string answer = "";
+
+    private void Calculate()
+    {
+        answer = "Starting";
+        answer = SharedProblem.Prime.calculateHugePrime(2_500_000);
+    }
+}
