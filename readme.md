@@ -1,5 +1,16 @@
 ﻿https://learn.microsoft.com/en-us/aspnet/core/blazor/host-and-deploy/webassembly?view=aspnetcore-7.0  AOT ????
 
+2017 Mozill, Google,  Microsoft, Webkit in Browsers
+https://news.ycombinator.com/item?id=33721685 - wasmer3
+
+The sieve of Eratosthenes
+
+
+If I had more time, test Wasm on Cloudflare
+
+How it works:
+- SDK: Microsoft.NET.Sdk.BlazorWebAssembly
+
 ## Blazor
 
 - cd Blazor
@@ -63,6 +74,7 @@ net6
 ## Wasi
 
 - https://github.com/SteveSandersonMS/dotnet-wasi-sdk
+- https://github.com/bytecodealliance/wasmtime
 - Crashes
 
 ## Take aways for my tests

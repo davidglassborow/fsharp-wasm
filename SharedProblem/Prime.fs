@@ -2,6 +2,7 @@
 
 module Prime =
 
+    // https://stackoverflow.com/a/17820204/131701
     let private primesAPF32() =
       let rec oddprimes() =
         let BUFSZ = 1<<<17 in let buf = Array.zeroCreate (BUFSZ>>>5) in let BUFRNG = uint32 BUFSZ<<<1
