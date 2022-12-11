@@ -26,6 +26,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Console6", "Console6\Consol
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Wasi", "Wasi\Wasi.fsproj", "{3C6E74DC-D551-4D64-A370-4B272B37EBD4}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FunBlazor", "FunBlazor\FunBlazor.fsproj", "{A697E662-689A-418F-A989-0FFFA03A40FF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -64,6 +66,10 @@ Global
 		{3C6E74DC-D551-4D64-A370-4B272B37EBD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C6E74DC-D551-4D64-A370-4B272B37EBD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C6E74DC-D551-4D64-A370-4B272B37EBD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A697E662-689A-418F-A989-0FFFA03A40FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A697E662-689A-418F-A989-0FFFA03A40FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A697E662-689A-418F-A989-0FFFA03A40FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A697E662-689A-418F-A989-0FFFA03A40FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

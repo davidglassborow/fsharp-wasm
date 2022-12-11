@@ -20,6 +20,16 @@ https://fsbolero.io, NET6
 - 2.5M, 3.33 in Safari 16.1
 - 2.5M, 9.20 in Chrome 108
 
+## Fun.Blazor
+
+https://slaveoftime.github.io/Fun.Blazor.Docs/
+
+- 2.5M, 3.73 in Safari 16.1
+- 2.5M, 8.78 in Chrome 108
+
+- 10M prime in 16.372 in Safari 16.1
+- 10M prime in 36.52 in Crhome 108
+
 ## Console
 
 net7
@@ -58,9 +68,10 @@ net6
 ## Take aways for my tests
 
 - caveats
-  - bolero net6
+  - bolero and fun.blazor net6
   - other normal caveats apply
-
+  - not consistently checked in production mode
+  - only for interesting
 
 - Chrome 108 runs javascript x3 faster than Safari 16.1 on my mac
 - Safari runs wasm x2.5 faster than Chrome on my mac
