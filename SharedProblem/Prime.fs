@@ -41,5 +41,6 @@ module Prime =
         $"Calculated {nth} prime in {tim} = {ans}"
 
     let run () =
-        //calculateHugePrime 2_500_000
-        calculateHugePrime 100_000_000
+        calculateHugePrime 2_500_000
+        //calculateHugePrime 10_000_000
+        //calculateHugePrime 100_000_000

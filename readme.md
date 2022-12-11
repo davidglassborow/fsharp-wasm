@@ -50,6 +50,10 @@ net6
 - Safari 16.1, 2.5M, 1.13 seconds.  10M, 4.58s
 - Chrome 108, 2.5M, 0.33 seconds. 10M, 1.32s
 
+## Wasi
+
+- https://github.com/SteveSandersonMS/dotnet-wasi-sdk
+- Crashes
 
 ## Take aways for my tests
 
