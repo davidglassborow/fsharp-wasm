@@ -160,13 +160,19 @@ Happy Xmas to all,
 Cheers,
 Dave
 
+# Update
+
+Following [Paul Biggar](https://twitter.com/paulbiggar/status/1604833374929326081?s=46&t=GOI1I3iFkS_JlTiMzd-HyQ) of DarkLang fame, I've updated the Blazor WASM test to include AOT. I've also explicitly show the difference between Blazor in (non-AOT) debug vs release mode builds.
+
+You can see Release builds help a fair bit, and AOT a little bit more, but Fable is still king by a mile 😎
+
+![perf-aot](Images/results-aot.png)
 
 
 # Appendix
 
 I've run out of time but other things I'd like to investigate further when I get a chance:
 
-- Use [Ahead of Time compliation](https://learn.microsoft.com/en-us/aspnet/core/blazor/host-and-deploy/webassembly?view=aspnetcore-7.0) in net7 to see how that improves WASM peformance.
 - Running F# in WASM on Cloudflare
 
 Misc references:
