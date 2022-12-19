@@ -152,11 +152,14 @@ I was very surprised in the differences between Safari and Chrome, with Safari r
 
 The fastest code in the end was Chrome running javascript via Fable, which is shocking, but I guess larger tests might help dotnet native where the JIT gets time to kick in.
 
-My overall take away is just **how good** Fable is, and how fast in the browsers, and where as wasm helps C# run in the browser, we in the F# community are very lucky to have the other option of running on Javascript directly.
+I did also try and run the tests compiled with the WASI experimental nuget package mentioned above, and run via *wasmtime*.  I was able to get it working with F# ok, and running general code, but found it crashes in the primes problem, and generally seemed to have problems with recursive functions in F#.
+
+My overall take away from all of this is just **how good** Fable is, and how fast it is in the browsers, and where as wasm helps C# run in the browser, we in the F# community are very lucky to have the other option of running transpiled Javascript directly.
 
 Happy Xmas to all,
 Cheers,
 Dave
+
 
 
 # Appendix
@@ -177,3 +180,4 @@ Code:
 
 - The Primes problem code is in the [Shared problem / prime.fs file](SharedProblem/Prime.fs)
 - All the various projects run on .net7
+- Fable is running on `4.0.0-theta-007` to make it work ok with the .net7 SDK, and it needed to mess around with the webpack config file due to changes in how webpack specifies ports to use.
