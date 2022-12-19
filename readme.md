@@ -162,7 +162,7 @@ Dave
 
 # Update
 
-Following [Paul Biggar](https://twitter.com/paulbiggar/status/1604833374929326081?s=46&t=GOI1I3iFkS_JlTiMzd-HyQ) of DarkLang fame, I've updated the Blazor WASM test to include AOT. I've also explicitly show the difference between Blazor in (non-AOT) debug vs release mode builds.
+Following [Paul Biggar](https://twitter.com/paulbiggar/status/1604833374929326081?s=46&t=GOI1I3iFkS_JlTiMzd-HyQ)'s suggestion (of [DarkLang](https://darklang.com) fame), I've updated the Blazor WASM test to include AOT. I've also explicitly show the difference between Blazor in (non-AOT) debug vs release mode builds.
 
 You can see Release builds help a fair bit, and AOT a little bit more, but Fable is still king by a mile 😎
 
