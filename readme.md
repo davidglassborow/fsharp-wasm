@@ -55,7 +55,11 @@ It's built into .net these days, to allow C# to run inside the browser by being 
 
 The .NET build chain uses Mono, [compiled via Emscripten](https://github.com/dotnet/runtime/tree/main/src/mono/wasm), and can even [add native dependencies](https://learn.microsoft.com/en-us/aspnet/core/blazor/webassembly-native-dependencies?view=aspnetcore-7.0#use-native-code) from C or C++.
 
-Once compiled, on startup the project uses the [WebAssemblyHost](https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.components.webassembly.hosting.webassemblyhost), builders and interfaces to bootstrap the Aspnet pipeline with DI etc.  Build in routing components provide the runtime WASM files for the browser to load as it starts up.
+Once compiled, on startup the project uses the [WebAssemblyHost](https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.components.webassembly.hosting.webassemblyhost), builders and interfaces to bootstrap the Aspnet pipeline with DI etc.  
+
+Build in routing components provide the runtime WASM files for the browser to load as it starts up, you can see below the loading of the various DLLs to run in the browser, in release mode these are all bundled together.
+
+![network-loading](/Images/webtools.png)
 
 ## 4. How do you use if from F#
 
@@ -97,7 +101,9 @@ let entry =
 
 One of the aims of WASM is to be fast, faster than Javascript is.  It's compiled rather than interpreted.
 
-I've choose an implementation of the sieve of Eratosthenes as a test of pure computation rather than IO or memory usage. I found [this crazy fast](https://stackoverflow.com/a/17820204/131701) implementation on StackOverflow. No, I don't know how it works ;-)
+To run some quick perf tests I've choosen an implementation of the sieve of Eratosthenes as a test of pure computation throughput (rather than IO etc). I found [this crazy fast](https://stackoverflow.com/a/17820204/131701) implementation on StackOverflow. 
+
+No, I don't know how it works, but it is incredibly fast, it can work out the first 10 million primes in under 2 seconds in native code.
 
 ```fsharp
     // https://stackoverflow.com/a/17820204/131701
@@ -124,130 +130,50 @@ I've choose an implementation of the sieve of Eratosthenes as a test of pure com
       and baseprimes = oddprimes() |> Seq.cache
       seq { yield 2u; yield! oddprimes() }
 
-    let private calculatePrime nth =
+    let calculatePrime nth =
         primesAPF32() |> Seq.item nth
 ```
+
+I playing around, and found the time to calculate the first 10 million primes seemed to give indicative results.  Less than 10 million was too quick, and getting up into the half billion range started to take a minute or so.
+
+I compared Blazor with Bolero and Fun Blazor but they all gave the same sorts of performance, which makes sence given they are all running on the same underlying code.
+
+I quickly noticed that the browser made a huge difference to performance, so recorded different times for Safari (v16.1) and Chrome (v108).  I also added native code and javascript (compiled via Fable) to compare to the WASM code.  Times are in seconds:
+
+![results](Images/results.png)
 
 Caveats for these tests:
 
 - They were done quickly, not rigourlessly
-- Bolero and Fun.Blazor were running on net6, the others on net7
 - I didn't always run test in release mode.
 - All tests run on my 2015 iMac, a quad core 4Ghz i7.
 
-Take aways:
+I was very surprised in the differences between Safari and Chrome, with Safari running wasm x2.5 faster than Chrome, but Chrome running Javascript x3 faster than Safari. I did compare .net6 and .net7, but they were really too close to see if there was any difference that wasn't noise.
 
-- Chrome 108 runs javascript x3 faster than Safari 16.1 on my mac
-- Safari runs wasm x2.5 faster than Chrome on my mac
-- Fable is approximately as fast native F# code which is very surprising, larger tests might help dotnet via the JIT
+The fastest code in the end was Chrome running javascript via Fable, which is shocking, but I guess larger tests might help dotnet native where the JIT gets time to kick in.
+
+My overall take away is just **how good** Fable is, and how fast in the browsers, and where as wasm helps C# run in the browser, we in the F# community are very lucky to have the other option of running on Javascript directly.
+
+Happy Xmas to all,
+Cheers,
+Dave
 
 
-
-
-
-Performance wise WASM obviously has lots of opportunity to improve. One area is multithreading, another is GC.
+# Appendix
 
 I've run out of time but other things I'd like to investigate further when I get a chance:
 
 - Use [Ahead of Time compliation](https://learn.microsoft.com/en-us/aspnet/core/blazor/host-and-deploy/webassembly?view=aspnetcore-7.0) in net7 to see how that improves WASM peformance.
 - Running F# in WASM on Cloudflare
 
-
-- WASM gc
-
-
-
 Misc references:
 
 - [Experimental WebAssembly Multithreading in .NET 7](https://visualstudiomagazine.com/articles/2022/10/11/blazor-webassembly-net7.aspx)
+- A few hacker new discussions around WASM performance, WASI, etc:
+  - [https://news.ycombinator.com/item?id=33792322](https://news.ycombinator.com/item?id=33792322)
+  - [https://news.ycombinator.com/item?id=33816186](https://news.ycombinator.com/item?id=33816186)
 
+Code:
 
-
----
-
-
-https://news.ycombinator.com/item?id=33792322
-https://news.ycombinator.com/item?id=33816186
-
-
-
-
-https://learn.microsoft.com/en-us/aspnet/core/blazor/host-and-deploy/webassembly?view=aspnetcore-7.0  AOT ????
-
-2017 Mozill, Google,  Microsoft, Webkit in Browsers
-https://news.ycombinator.com/item?id=33721685 - wasmer3
-
-
-
-
-If I had more time, test Wasm on Cloudflare
-
-How it works:
-- SDK: Microsoft.NET.Sdk.BlazorWebAssembly
-
-## Blazor
-
-- cd Blazor
-- dotnet build --property:Configuration=Release
-- dotnet run
-
-- 2.5M, 3.235 in Safari 16.1
-- 10M, 15.88 Safari
-- 2.5M, 8.10 in Chrome 108
-- 10M, 35.2 in Chrome 108
-
-## Bolero
-
-https://fsbolero.io, NET6
-
-- dotnet run -p src/MyApp.Server
-
-- 2.5M, 3.33 in Safari 16.1
-- 2.5M, 9.20 in Chrome 108
-
-## Fun.Blazor
-
-https://slaveoftime.github.io/Fun.Blazor.Docs/
-
-- 2.5M, 3.73 in Safari 16.1
-- 2.5M, 8.78 in Chrome 108
-
-- 10M prime in 16.372 in Safari 16.1
-- 10M prime in 36.52 in Crhome 108
-
-## Console
-
-net7
-
-- cd Console
-- dotnet build --property:Configuration=Release
-- dotnet run
-- open "http://localhost:5214"
-
-- 2.5M, 0.47 seconds.
-- 10M, 1.93 seconds
-- 100M, 21.72
-- 100m 22.212897 
-
-net6
-
-- 10m, 1.96 seconds
-- 100M, 21.72
-
-## Fable
-
-- Fable.io
-
-- cd Fable
-- npm install
-- npm start
-
-- Safari 16.1, 2.5M, 1.13 seconds.  10M, 4.58s
-- Chrome 108, 2.5M, 0.33 seconds. 10M, 1.32s
-
-## Wasi
-
-- https://github.com/SteveSandersonMS/dotnet-wasi-sdk
-- https://github.com/bytecodealliance/wasmtime
-- Crashes
-
+- The Primes problem code is in the [Shared problem / prime.fs file](SharedProblem/Prime.fs)
+- All the various projects run on .net7
