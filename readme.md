@@ -173,7 +173,7 @@ You can see Release builds help a fair bit, and AOT a little bit more, but Fable
 - 2022-12-30: Docker has added support for [running WASM containers](https://docs.docker.com/desktop/wasm/)
 - 2023-01-04: [F# Wasm on Supabase](https://hashset.dev/article/19_f_in_strange_places_supabase_edge_functions) including info on `<RuntimeIdentifier>browser-wasm</RuntimeIdentifier>` 
 
-![docker-wasm](https://www.docker.com/wp-content/uploads/2022/10/docker-containerd-wasm-diagram.png.webp)
+![docker-wasm](https://www.docker.com/wp-content/uploads/2022/10/docker-containerd-wasm-diagram.png)
 
 # Appendix
 
