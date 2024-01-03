@@ -18,6 +18,8 @@ let net8 = [
     "Native .net7 (debug)", 1.93
     "Native .net8 (debug)", 1.84
     "Native .net8 (release)", 0.83
+    "Wasm Safari Release AOT", 9.53
+    "Wasm Chrome Release AOT", 9.137
 ]
 
 
