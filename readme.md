@@ -160,7 +160,7 @@ Happy Xmas to all,
 Cheers,
 Dave
 
-# Update
+# Update AOT
 
 Following [Paul Biggar](https://twitter.com/paulbiggar/status/1604833374929326081?s=46&t=GOI1I3iFkS_JlTiMzd-HyQ)'s suggestion (of [DarkLang](https://darklang.com) fame), I've updated the Blazor WASM test to include AOT. I've also explicitly show the difference between Blazor in (non-AOT) debug vs release mode builds.
 
@@ -174,6 +174,13 @@ You can see Release builds help a fair bit, and AOT a little bit more, but Fable
 - 2023-01-04: [F# Wasm on Supabase](https://hashset.dev/article/19_f_in_strange_places_supabase_edge_functions) including info on `<RuntimeIdentifier>browser-wasm</RuntimeIdentifier>` 
 
 ![docker-wasm](https://www.docker.com/wp-content/uploads/2022/10/docker-containerd-wasm-diagram.png)
+
+# Dotnet 8 release
+
+- 8.0.100
+- Blazor 8
+- Console 8
+- Wasi
 
 # Appendix
 

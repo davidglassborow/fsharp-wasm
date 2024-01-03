@@ -14,6 +14,13 @@ let tenMillion = [
     "Fable Chrome", 1.32
 ]
 
+let net8 = [  
+    "Native .net7 (debug)", 1.93
+    "Native .net8 (debug)", 1.84
+    "Native .net8 (release)", 0.83
+]
+
+
 Chart.Column(
     tenMillion |> List.map snd,
     tenMillion |> List.map fst ) |> Chart.show
