@@ -178,12 +178,12 @@ You can see Release builds help a fair bit, and AOT a little bit more, but Fable
 # December 2023 - dotnet 8 update
 
 I've re-run the tests using dotnet 8.0.100, same hardware as last time, latest copies of Safari, Google and Firefox (for my collegue Miles).
-Quick summary: everything got faster, and WASM got a lot faster:
+Quick summary: everything got faster, WASM got a lot faster, and Safari now has the Javascript crown:
 
 - Wasm on Chrome is x3 faster than a year ago
-- Safari got faster at native javascript, faster even than Chrome
+- Safari got faster at native javascript than a year ago, 3.5 times faster.
 - WASI is now supported by net8, I've added it to the test, running on the wasmtime runtime. See the [microsoft blog about wasm](https://devblogs.microsoft.com/dotnet/extending-web-assembly-to-the-cloud/)
-- I finally ran native F# in release mode, and it smoked everything. I don't have dotnet7 of my mac anymore, so don't have the figures for .net7 in release mode.
+- I finally ran native F# in release mode, and it smoked everything (AOT didn't make any difference). I don't have dotnet7 of my mac anymore, so don't have the figures for native .net7 in release mode.
 
 ![perf-8](Images/results-8.png)
 
