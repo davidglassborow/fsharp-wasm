@@ -182,6 +182,8 @@ You can see Release builds help a fair bit, and AOT a little bit more, but Fable
 - Console 8
 - Wasi
 
+https://devblogs.microsoft.com/dotnet/extending-web-assembly-to-the-cloud/
+
 # Appendix
 
 I've run out of time but other things I'd like to investigate further when I get a chance:
