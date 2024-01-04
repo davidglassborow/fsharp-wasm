@@ -24,8 +24,8 @@ let net8 = [
     "Fable Safari", 1.24
     "Fable Chrome", 1.59
     "Fable Firebox", 2.70
+    "Wasitime", 11.31
 ]
-
 
 Chart.Column(
     tenMillion |> List.map snd,
