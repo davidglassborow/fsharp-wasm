@@ -160,7 +160,7 @@ Happy Xmas to all,
 Cheers,
 Dave
 
-# Update
+# Update AOT
 
 Following [Paul Biggar](https://twitter.com/paulbiggar/status/1604833374929326081?s=46&t=GOI1I3iFkS_JlTiMzd-HyQ)'s suggestion (of [DarkLang](https://darklang.com) fame), I've updated the Blazor WASM test to include AOT. I've also explicitly show the difference between Blazor in (non-AOT) debug vs release mode builds.
 
@@ -168,12 +168,24 @@ You can see Release builds help a fair bit, and AOT a little bit more, but Fable
 
 ![perf-aot](Images/results-aot.png)
 
-# Further Updates
+# Further Notes
 
 - 2022-12-30: Docker has added support for [running WASM containers](https://docs.docker.com/desktop/wasm/)
 - 2023-01-04: [F# Wasm on Supabase](https://hashset.dev/article/19_f_in_strange_places_supabase_edge_functions) including info on `<RuntimeIdentifier>browser-wasm</RuntimeIdentifier>` 
 
 ![docker-wasm](https://www.docker.com/wp-content/uploads/2022/10/docker-containerd-wasm-diagram.png)
+
+# December 2023 - dotnet 8 update
+
+I've re-run the tests using dotnet 8.0.100, same hardware as last time, latest copies of Safari, Google and Firefox (for my collegue Miles).
+Quick summary: everything got faster, WASM got a lot faster, and Safari now has the Javascript crown:
+
+- Wasm on Chrome is x3 faster than a year ago
+- Safari got faster at native javascript than a year ago, 3.5 times faster.
+- WASI is now supported by net8, I've added it to the test, running on the wasmtime runtime. See the [microsoft blog about wasm](https://devblogs.microsoft.com/dotnet/extending-web-assembly-to-the-cloud/)
+- I finally ran native F# in release mode, and it smoked everything (AOT didn't make any difference). I don't have dotnet7 of my mac anymore, so don't have the figures for native .net7 in release mode.
+
+![perf-8](Images/results-8.png)
 
 # Appendix
 
@@ -191,5 +203,4 @@ Misc references:
 Code:
 
 - The Primes problem code is in the [Shared problem / prime.fs file](SharedProblem/Prime.fs)
-- All the various projects run on .net7
-- Fable is running on `4.0.0-theta-007` to make it work ok with the .net7 SDK, and it needed to mess around with the webpack config file due to changes in how webpack specifies ports to use.
+- All the various projects run on .net8

@@ -2,4 +2,6 @@ bin/
 obj/
 .vs/
 
-.fake
+Fable/fable_modules/
+Fable/node_modules/
+Prime.fs.js

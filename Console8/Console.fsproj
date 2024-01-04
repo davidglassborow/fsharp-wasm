@@ -1,9 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <RuntimeIdentifier>wasi-wasm</RuntimeIdentifier>
     <OutputType>Exe</OutputType>
-    <PublishTrimmed>true</PublishTrimmed>
+    <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,4 +12,5 @@
   <ItemGroup>
     <ProjectReference Include="..\SharedProblem\SharedProblem.fsproj" />
   </ItemGroup>
+
 </Project>

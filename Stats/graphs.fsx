@@ -14,6 +14,19 @@ let tenMillion = [
     "Fable Chrome", 1.32
 ]
 
+let net8 = [  
+    "Wasm Firefox Release AOT", 13.41
+    "Wasitime", 11.31
+    "Wasm Safari Release AOT", 9.53
+    "Wasm Chrome Release AOT", 9.14
+    "Fable Firebox", 2.70
+    "Fable Chrome", 1.59
+    "Fable Safari", 1.24
+    "Native .net7 (debug)", 1.93
+    "Native .net8 (debug)", 1.84
+    "Native .net8 (release)", 0.83
+]
+
 Chart.Column(
-    tenMillion |> List.map snd,
-    tenMillion |> List.map fst ) |> Chart.show
+    net8 |> List.map snd,
+    net8 |> List.map fst ) |> Chart.show
