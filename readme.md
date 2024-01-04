@@ -168,21 +168,24 @@ You can see Release builds help a fair bit, and AOT a little bit more, but Fable
 
 ![perf-aot](Images/results-aot.png)
 
-# Further Updates
+# Further Notes
 
 - 2022-12-30: Docker has added support for [running WASM containers](https://docs.docker.com/desktop/wasm/)
 - 2023-01-04: [F# Wasm on Supabase](https://hashset.dev/article/19_f_in_strange_places_supabase_edge_functions) including info on `<RuntimeIdentifier>browser-wasm</RuntimeIdentifier>` 
 
 ![docker-wasm](https://www.docker.com/wp-content/uploads/2022/10/docker-containerd-wasm-diagram.png)
 
-# Dotnet 8 release
+# December 2023 - dotnet 8 update
 
-- 8.0.100
-- Blazor 8
-- Console 8
-- Wasi
+I've re-run the tests using dotnet 8.0.100, same hardware as last time, latest copies of Safari, Google and Firefox (for my collegue Miles).
+Quick summary: everything got faster, and WASM got a lot faster:
 
-https://devblogs.microsoft.com/dotnet/extending-web-assembly-to-the-cloud/
+- Wasm on Chrome is x3 faster than a year ago
+- Safari got faster at native javascript, faster even than Chrome
+- WASI is now supported by net8, I've added it to the test, running on the wasmtime runtime. See the [microsoft blog about wasm](https://devblogs.microsoft.com/dotnet/extending-web-assembly-to-the-cloud/)
+- I finally ran native F# in release mode, and it smoked everything. I don't have dotnet7 of my mac anymore, so don't have the figures for .net7 in release mode.
+
+![perf-8](Images/results-8.png)
 
 # Appendix
 
@@ -200,5 +203,4 @@ Misc references:
 Code:
 
 - The Primes problem code is in the [Shared problem / prime.fs file](SharedProblem/Prime.fs)
-- All the various projects run on .net7
-- Fable is running on `4.0.0-theta-007` to make it work ok with the .net7 SDK, and it needed to mess around with the webpack config file due to changes in how webpack specifies ports to use.
+- All the various projects run on .net8
